@@ -46,7 +46,13 @@
     .subtitle {
       font-size: 14px;
       opacity: 0.85;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
+    }
+
+    .build-info {
+      margin: 15px 0;
+      font-size: 14px;
+      color: #38bdf8;
     }
 
     .stack {
@@ -54,6 +60,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 10px;
+      margin-top: 20px;
     }
 
     .badge {
@@ -84,6 +91,11 @@
       End-to-End CI/CD with Security & Monitoring
     </div>
 
+    <!-- 🔥 Jenkins Build Info -->
+    <div class="build-info" id="buildInfo">
+      Loading deployment details...
+    </div>
+
     <div class="stack">
       <div class="badge">GitHub</div>
       <div class="badge">Jenkins</div>
@@ -100,5 +112,19 @@
       Built by Ajay Kumar | DevSecOps Project
     </footer>
   </div>
+
+  <!-- ✅ Fetch Jenkins Build Number -->
+  <script>
+    fetch("/build-info")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("buildInfo").innerHTML =
+          `Jenkins Build #: <b>${data.buildNumber}</b><br>${data.status}`;
+      })
+      .catch(() => {
+        document.getElementById("buildInfo").innerText =
+          "Build info unavailable (local run)";
+      });
+  </script>
 </body>
 </html>
