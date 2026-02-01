@@ -17,16 +17,20 @@ pipeline {
     }
 
     stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv('sonarqube') {
-          sh '''
-            sonar-scanner \
-              -Dsonar.projectKey=devops-eks-app \
-              -Dsonar.sources=.
-          '''
-        }
+  steps {
+    script {
+      def scannerHome = tool 'sonar-scanner'
+      withSonarQubeEnv('sonarqube') {
+        sh """
+          ${scannerHome}/bin/sonar-scanner \
+            -Dsonar.projectKey=devops-eks-app \
+            -Dsonar.sources=.
+        """
       }
     }
+  }
+}
+
 
     stage('Quality Gate') {
       steps {
