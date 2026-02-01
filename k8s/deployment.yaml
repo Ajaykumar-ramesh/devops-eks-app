@@ -15,6 +15,10 @@ spec:
         app: devops-app
     spec:
       containers:
+      env:
+  - name: BUILD_NUMBER
+    value: "MANUAL"
+
         - name: devops-app
           image: 460425809337.dkr.ecr.ap-south-1.amazonaws.com/devops-app-repo:latest
           ports:
