@@ -4,6 +4,8 @@
 This project demonstrates an end-to-end DevSecOps CI/CD pipeline deployed on AWS EKS.
 It automates application build, security scanning, containerization, and Kubernetes deployment with monitoring.
 
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/829c2ca8-0db9-4f42-8965-c33f45d6e91c" />
+
 
 🧰 Tools & Technologies Used
 
